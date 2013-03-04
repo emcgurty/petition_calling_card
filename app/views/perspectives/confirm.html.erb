@@ -1,0 +1,137 @@
+<form>
+<table class="ListComments" >
+
+<tr valign="top">
+<td style="width:5%"  >&nbsp;</td>
+<td style="width:10%" >&nbsp;</td>
+<td style="width:15%" >&nbsp;</td>
+<td style="width:35%" >&nbsp;</td>
+<td style="width:20%" >&nbsp;</td>
+</tr>
+
+
+<tr valign="top">
+<td style="width:5%"  >&nbsp;</td>
+<td colspan=3 class=PetitionTitle>Perspective Offered for Approval</td>
+<td style="width:20%" >&nbsp;</td>
+</tr>
+
+<tr valign="top">
+<td style="width:5%"  >&nbsp;</td>
+<td style="width:10%" >&nbsp;</td>
+<td style="width:15%" >&nbsp;</td>
+<td style="width:35%" >&nbsp;</td>
+<td style="width:20%" >&nbsp;</td>
+</tr>
+
+<tr valign="top">
+<td style="width:5%"  ></td>
+<td class=PageTitle2 colspan=3 >Regretfully I need to review perspective comment content.</td>
+<td style="width:20%" ></td>
+</tr>
+
+
+<tr valign="top">
+<td style="width:5%"  >&nbsp;</td>
+<td style="width:10%" >&nbsp;</td>
+<td style="width:15%" >&nbsp;</td>
+<td style="width:35%" >&nbsp;</td>
+<td style="width:20%" >&nbsp;</td>
+</tr>
+
+
+
+<tr  >
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:10%" class=label1 >Alias:</td>
+<td style="width:15%" class=label1 >Email:</td>
+<td style="width:35%"  ></td>
+<td style="width:20%"  ></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:10%"  ><%=  @perspectives.alias %></td>
+<td style="width:15%"  ><%=  @perspectives.email %></td>
+<td style="width:35%"  ></td>
+<td style="width:20%"  ></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:10%"  ></td>
+<td style="width:15%"  ></td>
+<td style="width:35%"  ></td>
+<td style="width:20%"  ></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:10%" class=label1  >Comments:</td>
+<td style="width:15%"  ></td>
+<td style="width:35%"  ></td>
+<td style="width:20%"  ></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:10%" colspan=3 rowspan=4 valign=top><%=  @perspectives.comments %></td>
+<td style="width:20%"  ></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:20%"  ></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:20%"  ></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:20%"  ></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:10%"  ></td>
+<td style="width:15%"  ></td>
+<td style="width:35%"  ></td>
+<td style="width:20%"  ></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td colspan=2 >&nbsp;&nbsp;
+<%= link_to "Changed My Mind", perspectives_destroy_url(@perspectives.uuid), {:class=>"button_style"} %>
+</td>
+<td colspan=2  ><%= link_to "email For Approval", perspectives_accept_url(@perspectives.uuid), { :class=>"button_style" } %></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:10%"  >&nbsp;</td>
+<td style="width:15%"  >&nbsp;</td>
+<td style="width:35%"  >&nbsp;</td>
+<td style="width:20%"  >&nbsp;</td>
+</tr>
+
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td colspan=3 class=PetitionTitle valign=center align=center >&nbsp;&nbsp;&nbsp;Please click the above options only once.</td>
+<td style="width:20%"  ></td>
+</tr>
+
+<tr>
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:10%"  >&nbsp;</td>
+<td style="width:15%"  >&nbsp;</td>
+<td style="width:35%"  >&nbsp;</td>
+<td style="width:20%"  >&nbsp;</td>
+</tr>
+</table>
+
+</form>

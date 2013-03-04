@@ -1,0 +1,205 @@
+<% form_for(:users, :url => {:action => 'create'}) do |nf| %>   
+
+<%=  check_for_errors(@users) %>
+
+
+  <table class=ListComments style="width:100%">
+    <tr >
+      <td style="width:5%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+    <tr >
+      <td style="width:5%"></td>
+      <td colspan=3 class=PetitionTitle >User Registration</td>
+      <td style="width:15%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+
+    <tr >
+      <td style="width:5%"></td>
+      <td style="width:15%" class=labelred></td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%"> </td>
+      <td style="width:10%"> </td>
+      <td style="width:10%"> </td>
+      <td style="width:10%"> </td>
+    </tr>
+    <tr >
+      <td style="width:5%"></td>
+      <td colspan=3 class=labelred>* The red fields are required. (x) indicates maximum allowed characters.</td>
+      <td style="width:10%"> </td>
+      <td style="width:10%"> </td>
+      <td style="width:10%"> </td>
+      <td style="width:10%"> </td>
+    </tr>
+
+    <tr >
+      <td style="width:5%"></td>
+      <td style="width:15%" class=labelred>User name: (6...16)</td>
+      <td colspan=2 class=labelred>&nbsp;</td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+    </tr>
+
+
+    <tr >
+      <td style="width:5%"></td>
+      <td style="width:15%" ><%= nf.text_field('username') %></td>
+      <td colspan=2>&nbsp;</td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+    </tr>
+
+
+    <tr >
+      <td style="width:5%"></td>
+      <td style="width:15%"></td>
+      <td style="width:15%"></td>
+      <td style="width:15%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+    </tr>
+
+
+    <tr >
+      <td style="width:5%"></td>
+      <td style="width:15%" class=labelred>Password: (6...16)</td>
+      <td colspan=2 class=labelred>Re-enter password:</td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+    </tr>
+
+
+    <tr >
+      <td style="width:5%"></td>
+      <td style="width:15%" ><%= nf.password_field(:password) %></td>
+      <td colspan=2> <%= nf.password_field(:password_confirmation) %></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+    </tr>
+
+    <tr >
+      <td style="width:5%"></td>
+      <td colspan=4 >
+        <table class=ListComments>
+          <tr>
+            <td style="width:25%" class=labelred >First Name (15):&nbsp;&nbsp;</td>
+            <td style="width:2%">&nbsp;</td>
+            <td style="width:12%" class=labelgreen >MI (1):</td>
+            <td style="width:2%">&nbsp;</td>
+            <td style="width:26%" class=labelred >Last Name (15):</td>
+            <td style="width:37%">&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+      <td style="width:10%"></td>
+      <td style="width:10%"> </td>
+      <td style="width:10%"></td>
+    </tr>
+
+
+    <tr >
+      <td style="width:5%"></td>
+      <td colspan=4 >
+        <table class=ListComments>
+          <tr>
+            <td style="width:25%" class=labelgreen ><%= nf.text_field :first_name , :size=>"15" %> </td>
+            <td style="width:2%">&nbsp;</td>
+            <td style="width:12%" class=labelgreen ><%= nf.text_field :mi , :size=>"1" %> </td>
+            <td style="width:2%">&nbsp;</td>
+            <td style="width:26%"class=labelgreen ><%= nf.text_field :last_name , :size=>"15" %> </td>
+            <td style="width:37%">&nbsp;</td>
+
+          </tr>
+        </table>
+      </td>
+      <td style="width:10%">&nbsp;</td>
+      <td style="width:10%"> </td>
+      <td style="width:10%"></td>
+    </tr>
+
+    <tr >
+      <td style="width:5%">&nbsp; </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+
+    <tr >
+      <td style="width:5%"> </td>
+      <td colspan=2 class=labelred >email address (50):</td>
+      <td style="width:15%"> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+
+
+    <tr >
+      <td style="width:5%"> </td>
+      <td colspan=2 class=labelgreen><%= nf.text_field('email') %> </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+    <tr >
+      <td style="width:5%"> &nbsp;</td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+
+    <tr >
+      <td style="width:5%" ></td>
+      <td style="width:15%" align=left><%= submit_tag 'Register', { :class => "button_style"} %></td>
+      <td colspan=2 align=left><%= link_to "Changed My Mind", root_url, {:class=> "button_style"} %></td>
+      <td style="width:15%">&nbsp; </td>
+      <td style="width:15%">&nbsp;</td>
+      <td style="width:10%">&nbsp;</td>
+      <td style="width:10%" >&nbsp;</td>
+      <td style="width:10%" ><%=  nf.hidden_field :remote_ip, :value => request.remote_ip %> </td>
+    </tr>
+    <tr >
+      <td style="width:5%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+
+  </table>
+
+<% end %>

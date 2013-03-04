@@ -1,0 +1,58 @@
+<h2 >An application exception was encountered</h2>
+
+<% if flash[:notice] %>
+
+  <table class=ListCommemts>
+
+    <tr>
+
+      <td style="width:5%"></td>
+      <td style="width:60%" class=PetitionTitle>This Petition site encountered the following error:</td>
+      <td style="width:30%"></td>
+    </tr>
+
+    <tr>
+      <td style="width:5%"></td>
+      <td style="width:60%" rowspan=2 class=titlegreen><%= flash[:notice] %></td>
+      <td style="width:30%"></td>
+    </tr>
+
+
+    <tr>
+      <td style="width:5%"></td>
+      <td style="width:30%"></td>
+    </tr>
+
+
+    <tr>
+      <td style="width:5%"></td>
+      <td style="width:60%" rowspan=2 >If you would like, please report this error to us, <%= CollaboratorMethods.collaborator_value[:collaborator][:email] %>. Otherwise I apologize for any inconvenience.</td>
+      <td style="width:30%"></td>
+    </tr>
+
+    <tr>
+      <td style="width:5%"></td>
+      <td style="width:30%"></td>
+    </tr>
+
+    <tr>
+      <td style="width:5%"></td>
+      <td style="width:60%"></td>
+      <td style="width:30%"></td>
+    </tr>
+
+    <tr>
+      <td style="width:5%"></td>
+      <td style="width:60%" ><%= link_to "Return to Petition Signatures", { :controller=>'signatures', :action=>'show'} , :class=>"button_style" %></td>
+      <td style="width:30%"></td>
+    </tr>
+
+    <tr>
+      <td style="width:5%"></td>
+      <td style="width:60%"></td>
+      <td style="width:30%"></td>
+    </tr>
+
+  </table>
+
+<% end %>

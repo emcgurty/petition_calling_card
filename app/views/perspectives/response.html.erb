@@ -1,0 +1,125 @@
+<% form_for(:find_history) do |items| %>
+  <% if @find_history.blank? %>
+
+    <table class=userComments style="width:100%" >
+
+      <tr valign="top">
+        <td style="width:2%"  >&nbsp;</td>
+        <td style="width:10%" >&nbsp;</td>
+        <td style="width:15%" >&nbsp;</td>
+        <td style="width:35%" >&nbsp;</td>
+        <td style="width:20%" >&nbsp;</td>
+      </tr>
+
+
+      <tr valign="top">
+        <td style="width:2%"  >&nbsp;</td>
+        <td colspan=2 class=PetitionTitle >Shared Perspectives</td>
+        <td style="width:35%" >&nbsp;</td>
+        <td style="width:20%" >&nbsp;</td>
+      </tr>
+
+
+      <tr valign="top">
+        <td style="width:2%"  >&nbsp;</td>
+        <td style="width:10%" colspan=3>No perspectives have been approved as yet.</td>
+        <td style="width:20%" >&nbsp;</td>
+      </tr>
+
+      <tr valign="top">
+        <td style="width:2%"  >&nbsp;</td>
+        <td style="width:10%" >&nbsp;</td>
+        <td style="width:15%" >&nbsp;</td>
+        <td style="width:35%" >&nbsp;</td>
+        <td style="width:20%" >&nbsp;</td>
+      </tr>
+
+    </table>
+
+
+  <% else %>
+    <table class=userComments style="width:100%" >
+
+      <tr valign="top">
+        <td style="width:2%"  >&nbsp;</td>
+        <td style="width:10%" >&nbsp;</td>
+        <td style="width:15%" >&nbsp;</td>
+        <td style="width:35%" >&nbsp;</td>
+        <td style="width:20%" >&nbsp;</td>
+      </tr>
+
+
+      <tr valign="top">
+        <td style="width:2%"  >&nbsp;</td>
+        <td colspan=2 class=PetitionTitle >Shared Perspectives</td>
+        <td style="width:35%" >&nbsp;</td>
+        <td style="width:20%" >&nbsp;</td>
+      </tr>
+
+      <tr valign="top">
+        <td style="width:2%"  ></td>
+        <td style="width:10%" ></td>
+        <td style="width:15%" ></td>
+        <td style="width:35%" ></td>
+        <td style="width:20%" ></td>
+      </tr>
+
+      <tr valign="top" align=left>
+        <td style="width:2%"  >&nbsp;</td>
+        <td style="width:10%" valign=top>Alias</td>
+        <td style="width:15%" valign=top>Alias email</td>
+        <td style="width:35%" >Comments</td>
+        <td style="width:20%" >Date Created</td>
+        <td style="width:20%" >Delete</td>
+
+      </tr>
+      <% myColor = 0 %>
+      <% @perspectives.each do |items| %>
+        <% myColor = myColor +1 %>
+        <% if (myColor % 2) == 1 %>
+          <tr bgcolor="#E8E8E8" ></tr>
+        <% else %>
+          <tr  >
+          <% end %>
+        <tr><td style="width:2%"   >&nbsp;</td>
+          <td style="width:10%"  valign=top><%=  items.alias %></td>
+          <td style="width:15%"  valign=top><%=  mail_to items.email %></td>
+          <td style="width:35%"  valign=top><%=  items.comments %></td>
+          <td style="width:20%"  valign=top class=smalldate><%=  items.created_at %></td>
+          <td style="width:20%"  valign=top class=smalldate>&nbsp;</td></tr>
+      <% end %>
+    </table>
+
+    <% @comments = 'new' %>
+  <% end %>
+
+  <table class=ListComments style="width:100%" >
+    <tr valign="top">
+      <td style="width:2%"  >&nbsp;</td>
+      <td style="width:10%" >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+      <td style="width:35%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td style="width:2%"  ><%= link_to "Delete", :controller=> 'perspectives', :action=>'delete_confirm',  :id => items.uuid, {:class=>"button_style"}  %></td>
+      <td colspan=2  ><%= link_to "Respond to this perspective" , perspectives_response_url(items.uuid), {:class=>"button_style"} %></td>
+      <td style="width:35%" ><%= link_to "Offer Your Perspective" , perspectives_new_url, {:class=>"button_style"} %></td>
+      <td style="width:20%" >&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td style="width:2%"  >&nbsp;</td>
+      <td style="width:10%" ></td>
+      <td style="width:15%" >&nbsp;</td>
+      <td style="width:35%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td style="width:2%"  >&nbsp;</td>
+      <td style="width:10%" >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+      <td style="width:35%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+    </tr>
+  </table>
+<% end %>

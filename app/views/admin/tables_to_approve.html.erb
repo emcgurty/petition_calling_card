@@ -1,0 +1,58 @@
+<h2 class="approvetitle">Tables Requiring Approval</h2>
+<%= form_tag('create') %>
+<table class="ListCommemts">
+   <tr>
+    <td>Please choose one table:</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td><%=  'Perspectives' %>:</td>
+    <td><%= radio_button_tag("approve", 'perspectives') %></td>
+  </tr>
+  <tr>
+    <td><%=  'Linkrequests' %>:</td>
+    <td><%= radio_button_tag("approve", 'linkrequests') %></td>
+  </tr>
+  <tr>
+    <td><%=  'Comments' %>:</td>
+    <td><%= radio_button_tag("approve",'comments') %></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+   <tr>
+    <td>Then please choose one table cut option:</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td><%= label_tag("Approved records") %>: <%= radio_button_tag("record_cut", 'approved') %></td>
+    <td><%= label_tag("Not approved") %>: <%= radio_button_tag("record_cut", 'not_approved') %></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<%= submit_tag "Approve Selected Table", {:class => 'button_style'} %>
+<br /><br />
+<%  if params[:p] %>
+  <div class="approval_div">
+    <% @passed_object = Perspectives.find(:all, :conditions => ['approved = ?', params[:record_cut]])  %>
+    <%= render :partial => 'list_approval_records', :locals => {:whichTitle => "Perspectives"} %>
+  </div>
+<%  elsif params[:c] %>
+  <div class="approval_div" >
+    <% @passed_object = Comments.find(:all, :conditions => ['approved = ?', params[:record_cut]])  %>
+    <%= render :partial => 'list_approval_records', :locals => {:whichTitle => "Comments"} %>
+  </div>
+<%  elsif params[:l] %>
+  <div class="approval_div">
+    <% @passed_object = Linkrequest.find(:all, :conditions => ['approved = ?', params[:record_cut]])  %>
+    <%= render :partial => 'list_approval_records', :locals => {:whichTitle => "Linkrequests"} %>
+  </div>
+<% end %>
+
+

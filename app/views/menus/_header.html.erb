@@ -1,0 +1,23 @@
+<div class=my_title> 
+  <div class=left_side_content >
+    <ul class=menu>
+      <li><%= link_to "The Petition", show_refresh_url  %></li>
+      <li><%= link_to "Perspectives", perspectives_show_url %></li>
+      <li><%= link_to "Offer Link", linkrequest_new_url %></li>
+      <li><%= link_to "About Us", collaborator_show_url %><br /></li>
+    </ul>
+  </div>
+
+  <div class=my_content id=title>
+    <table class=ListComments>
+      <tr>
+        <td class=title align=center><%= CollaboratorMethods.collaborator_value[:collaborator][:petition_title_short] %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class=right_side_content >
+    <%= login_menu_options %>
+  </div>
+
+</div> 

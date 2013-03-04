@@ -1,0 +1,33 @@
+<table class="ListComments" id="add_new_row">
+
+  <% if counter == 0 %>
+    <tr>
+      <th style="width:30%"  >Resource Url</th>
+      <th style="width:30%"  >Resource Description</th>
+      <th style="width:30%"  >Agree With Petition?</th>
+      <th style="width:10%" >Disregard?</th>
+    </tr>
+  <% end %>
+
+  <tr class="add_new_record1" id="add_new_record" >
+    <td style="width:30%" ><%=  new_form.text_field( :resource_url, { :name => "ru_#{counter}",:id => "ru_#{counter}" } ) %> </td>
+    <td style="width:30%" ><%=  new_form.text_area(:resource_description, {:size => "24X12", :name => "rd_#{counter}", :id => "rd_#{counter}"} )  %></td>
+    <td style="width:30%;text-align:center" ><%=  new_form.check_box(:supporting, {:name => "so_#{counter}", :id => "so_#{counter}"}) %></td>
+    <td style="width:10%;text-align:center" ><%=  new_form.check_box(:destroy_offering, {:name => "deo_#{counter}", :id => "deo_#{counter}"}) %></td>
+
+  </tr>
+
+  <tr>
+    <td style="width:30%" >&nbsp;</td>
+    <td style="width:30%" >
+      <% begin %>
+        <%=  new_form.hidden_field( :id, { :name => "ou_#{counter}",:id => "ou_#{counter}" } ) %>
+      <% rescue %>
+      <% end %>
+    </td>
+    <td style="width:30%" ></td>
+    <td style="width:10%" ></td>
+  </tr>
+
+</table>
+

@@ -1,0 +1,97 @@
+<form>
+<table style="width:55%">
+
+<tr>
+
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+
+<td style="width:5%">&nbsp;</td>
+<td colspan=3>Thank you <%=  @fullname %></td>
+<td style="width:5%">&nbsp;</td>
+
+</tr>
+
+<tr>
+
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">Your school:&nbsp;</td>
+<td colspan=2>
+
+ <% if @school.blank? %>
+    Not Provided
+ <% else %>
+    <%=  @school %>	
+  <% end %>
+</td>
+<td style="width:5%">&nbsp;</td>
+
+</tr>
+
+<tr>
+
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">Your role:&nbsp;</td>
+<td colspan=2>
+
+ <% if @role.blank? %>
+    Not Provided
+ <% else %>
+    <%=  @role %>	
+  <% end %>
+</td>
+<td style="width:5%">&nbsp;</td>
+
+</tr>
+
+<tr>
+
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+</table>
+
+</form>

@@ -1,0 +1,106 @@
+<% if @perspectives.blank? %>
+
+  <table class=userComments style="width:100%" >
+    <tr valign="top">
+      <td style="width:2%"  >&nbsp;</td>
+      <td style="width:10%" >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+      <td style="width:35%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td style="width:2%"  >&nbsp;</td>
+      <td colspan=2 class=PetitionTitle >Shared Perspectives</td>
+      <td style="width:35%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td style="width:2%"  >&nbsp;</td>
+      <td style="width:10%" colspan=3>No perspectives have been approved as yet.</td>
+      <td style="width:20%" >&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td style="width:2%"  >&nbsp;</td>
+      <td style="width:10%" >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+      <td style="width:35%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+    </tr>
+  </table>
+
+<% else %>
+
+  <% show_once = true %>
+  <% myColor = 0 %>
+
+  <% @perspectives.each do |items| %>
+    <% @tmp_cmt = Comments.find(:all, :conditions => ['p_uuid = ?', items.p_uuid]) %>
+    <% if show_once %>
+      <table class=userComments style="width:100%" >
+        <tr valign="top">
+          <td style="width:2%"  >&nbsp;</td>
+          <td colspan=2 class=PetitionTitle >Shared Perspectives</td>
+          <td style="width:35%" >&nbsp;</td>
+          <td style="width:20%" >&nbsp;</td>
+        </tr>
+        <tr valign="top" align=left>
+
+          <th style="width:10%" valign=top>Alias</th>
+          <th style="width:15%" valign=top>email</th>
+          <th style="width:35%" >Comments</th>
+          <th style="width:20%" >Date Created</th>
+          <th style="width:20%" >Delete</th>
+          <% unless @tmp_cmt.blank? %>
+            <th style="width:20%" >View Comments</th>
+          <% end %>
+          <th style="width:20%" >Add Comment</th>
+        </tr>
+      </table>
+      <% show_once = false %>
+    <% end %>
+    <table class=userComments style="width:100%" >
+      <% myColor = myColor +1 %>
+      <% if (myColor % 2) == 1 %>
+        <tr bgcolor="#E8E8E8" >
+        <% else %>
+        <tr bgcolor="#E5B372" >
+        <% end %>
+
+        <td style="width:10%"  valign=top><%=  items.alias %></td>
+        <td style="width:15%"  valign=top><%=  mail_to items.email %></td>
+        <td style="width:35%"  valign=top><%=  items.record_text %></td>
+        <td style="width:20%"  valign=top ><%=  items.created_at %></td>
+        <td style="width:20%"  valign=top ><%= link_to "Delete", perspectives_destroy_url(items.p_uuid)  %></td>
+
+        <% unless @tmp_cmt.blank?  %>
+          <td style="width:20%"><%= link_to "View Comments", comments_list_url(items.p_uuid) %></td>
+        <% end %>
+        <td style="width:20%"><%= link_to "Offer Comment", comments_new_url(items.p_uuid) %></td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>
+<table class=ListComments style="width:100%" >
+  <tr valign="top">
+    <td style="width:2%"  >&nbsp;</td>
+    <td style="width:10%" >&nbsp;</td>
+    <td style="width:15%" >&nbsp;</td>
+    <td style="width:35%" >&nbsp;</td>
+    <td style="width:20%" >&nbsp;</td>
+  </tr>
+  <tr valign="top">
+    <td style="width:2%"  >&nbsp;</td>
+    <td colspan=2  ><%= link_to "Offer Your Perspective" , perspectives_new_url, {:class=>"button_style"} %></td>
+    <td style="width:35%" >&nbsp;</td>
+    <td style="width:20%" >&nbsp;</td>
+  </tr>
+  <tr valign="top">
+    <td style="width:2%"  >&nbsp;</td>
+    <td style="width:10%" ></td>
+    <td style="width:15%" >&nbsp;</td>
+    <td style="width:35%" >&nbsp;</td>
+    <td style="width:20%" >&nbsp;</td>
+  </tr>
+</table>
+
+

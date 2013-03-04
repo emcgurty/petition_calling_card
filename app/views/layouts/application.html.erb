@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <title>Petitions</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Petitions</title>
+    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag :all, :cache => false %>
+  </head>
+  <body>
+
+
+    <% content_for :header do %>
+      <%= render :partial => 'menus/header' %>
+    <% end %>
+
+    <% content_for :footer do %>
+      <%= render :partial => 'menus/footer'  %>
+    <% end %>
+
+
+    <% content_for :center do %>
+      <%= yield -%>
+    <% end %>
+
+
+    <div class=last>
+      <div class=outer>
+        <div class=inner>
+          <%= yield :header %>
+        </div>
+      </div>
+    </div>
+
+    <div class=surround >
+
+      <div class=left_side_content id=center_body>
+        <%= render :partial => 'linkrequest/listOthers'  %>
+      </div>
+
+
+      <div class=my_content id=center_body>
+        <%= yield  :center -%>
+      </div>
+
+      <div class=right_side_content id=center_body>
+        <%= render :partial => 'linkrequest/videos'  %>
+      </div>
+
+    </div>
+
+
+    <div class=last style="clear:both;margin-top:5%;margin-bottom:1%">
+      <div class=outer>
+        <div class=inner>
+          <%= yield :footer %>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

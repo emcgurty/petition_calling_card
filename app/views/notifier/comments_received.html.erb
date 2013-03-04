@@ -1,0 +1,124 @@
+<form>
+<table style="width:55%">
+
+<tr>
+
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+
+<td style="width:5%">&nbsp;</td>
+<td colspan=3>Thank you for offering your perspective on ....</td>
+<td style="width:5%">&nbsp;</td>
+
+</tr>
+
+<tr>
+
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">Alias:&nbsp;</td>
+<td colspan=2"><%=  @alias %></td>
+
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">Comments:&nbsp;</td>
+<td colspan=2 rowspan=3 valign="top">
+
+ <% if @comments.blank? %>
+    Not Provided
+ <% else %>
+    <%=  @comments %>	
+  <% end %>
+</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">Date posted:</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%" colspan=3>    <%=  @created_at %>	</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td colspan=3 rowspan=2>Within a few business days you will receive notice of acceptance.  Otherwise, please disregard this email if you have received it in error.</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+<td style="width:15%">&nbsp;</td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+</table>
+
+</form>
+

@@ -1,0 +1,290 @@
+<% form_for(:linkrequest, :url => {:action => 'create'}, :html => {:multipart => true}) do |new_form| %>
+  <%=  flash[:notice] if flash[:notice] %>
+  <%=  check_for_errors(@linkrequest) %>
+  <% unless @linkrequest.offerings  %>
+    <%=  check_for_errors(@linkrequest.offerings) %>
+  <% end %>
+  <table class=ListComments >
+    <tr  >
+      <td style="width:5%">&nbsp; </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%"></td>
+      <td colspan=3  class=PetitionTitle >Offer Your Link</td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%">&nbsp;</td>
+      <td style="width:15%"></td>
+      <td style="width:15%"></td>
+      <td style="width:15%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%"></td>
+      <td colspan=3 class=labelred>* The red fields are required. (x) indicates maximum allowed characters.</td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+    <tr  >
+      <td style="width:5%">&nbsp;</td>
+      <td style="width:15%"></td>
+      <td style="width:15%"></td>
+      <td style="width:15%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%">
+        <% begin %>
+          <%=  new_form.hidden_field(:id) %>
+        <% rescue %>
+        <% end %>
+      </td>
+      <td style="width:15%" class=labelred>Organization Name (100)</td>
+      <td colspan=2 class=labelred>Organization URL (100)</td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+
+
+    <tr>
+      <td style="width:5%"></td>
+      <td style="width:15%" ><%=  new_form.text_field(:organization_name) %></td>
+      <td colspan="4"  ><%=  new_form.text_field(:organization_url) %></td>
+      <td style="width:20%"></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%"></td>
+      <td style="width:15%" class=labelred>City (15)</td>
+      <td style="width:15%" class=labelred>State</td>
+      <td style="width:15%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+
+    <tr  >
+
+      <td style="width:5%"></td>
+      <td style="width:15%" valign="top"><%=  new_form.text_field :city, :size=> 20 %></td>
+      <td style="width:15%">
+        <% collab_state = CollaboratorMethods.collaborator_value[:collaborator][:state] %>
+        <% collab_country = CollaboratorMethods.collaborator_value[:collaborator][:country] %>
+        <%= generate_combo(:us_states, collab_state) %></td>
+      <td style="width:15%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+
+    </tr>
+
+    <tr  >
+      <td style="width:5%"></td>
+      <td style="width:15%" class=labelred>Country</td>
+      <td style="width:15%" class=labelgreen>Providence</td>
+      <td style="width:15%" class=labelred>Zip / Postal Code (12)</td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+
+    <tr  >
+
+      <td style="width:5%"></td>
+      <td style="width:15%" valign="top"><%= generate_combo(:countries, collab_country) %></td>
+      <td style="width:15%"><%=  new_form.text_field :providence, :size=> 24 %></td>
+      <td style="width:15%"><%=  new_form.text_field :zip_code, :size=> 12 %></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%"></td>
+      <td colspan=2 class=labelred >Mission Statement (255, includes spaces)</td>
+      <td style="width:15%" class=labelgreen>Organization Image</td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%"></td>
+      <td style="width:15%" rowspan=2 colspan=2 valign=top class=labelgreen  ><%=  new_form.text_area(:record_text,:rows => 5, :cols => 55, :size=>255) %></td>
+      <td style="width:15%" rowspan=2 valign=top ><%=  new_form.file_field("uploaded_picture") %></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+    </tr>
+
+
+    <tr  >
+      <td style="width:5%">&nbsp; </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%">&nbsp;</td>
+      <td colspan=4 >
+
+        <table class=ListComments >
+          <tr>
+            <td style="width:25%" class=labelred  >First Name (15)</td>
+            <td style="width:1%" class=labelgreen  >&nbsp;</td>
+            <td style="width:10%" class=labelgreen >MI</td>
+            <td style="width:1%" class=labelgreen >&nbsp;</td>
+            <td style="width:25%" class=labelred >Last Name (15)</td>
+            <td style="width:38%">&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+
+      <td style="width:10%">&nbsp;</td>
+      <td style="width:10%">&nbsp; </td>
+      <td style="width:10%">&nbsp;</td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%">&nbsp;</td>
+      <td colspan=4 >
+        <table class=ListComments>
+          <tr>
+            <td style="width:25%" class=labelgreen ><%=  new_form.text_field :first_name, :size=>15 %> </td>
+            <td style="width:1%" class=labelgreen >&nbsp;</td>
+            <td style="width:10%" class=labelgreen ><%=  new_form.text_field :mi, :size=>1 %> </td>
+            <td style="width:1%" class=labelgreen >&nbsp;</td>
+            <td style="width:25%" class=labelgreen ><%=  new_form.text_field(:last_name, :size=>15) %> </td>
+            <td style="width:38%">&nbsp;</td>
+
+          </tr>
+        </table >
+      </td>
+
+      <td style="width:10%">&nbsp;</td>
+      <td style="width:10%">&nbsp; </td>
+      <td style="width:10%">&nbsp;</td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%">&nbsp; </td>
+      <td colspan=2 class=labelred >email address (50)</td>
+      <td style="width:15%"> </td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+
+    </tr>
+
+
+    <tr  >
+      <td style="width:5%">&nbsp; </td>
+      <td colspan=2 class=labelgreen><%=  new_form.text_field( :email,:size=>50) %>   </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+    </tr>
+    <tr  >
+      <td style="width:5%">&nbsp; </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:20%"></td>
+
+    </tr>
+
+    <tr  >
+      <td style="width:5%">&nbsp; </td>
+      <td colspan="5">
+        <div class="add_new_row">
+
+          <% ct = 0 %>
+          <% session[:resource_rows].times do %>
+            <%  @offers_hash = @linkrequest.offerings ?  (@linkrequest.offerings[ct]? @linkrequest.offerings[ct]:@linkrequest.offerings.build) : @linkrequest.offerings.build %>
+            <% new_form.fields_for @offers_hash do |build| %>
+              <%= render :partial => 'linkrequest/add_new_resource', :locals => {:new_form => build, :counter => ct}  %>
+            <% end %>
+            <% ct = ct + 1 %>
+          <% end %>
+        </div>
+      </td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+    <tr  >
+      <td style="width:5%">&nbsp; </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"></td>
+      <td style="width:15%"> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+
+
+
+    <tr  >
+      <td style="width:5%">&nbsp; </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"></td>
+      <td style="width:15%"> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" ></td>
+      <td style="width:15%" align=left><%= submit_tag  "Submit for Approval", {:class=>"button_style"} %></td>
+      <td style="width:15%" align=left><%= submit_tag  "Changed My Mind", {:class=>"button_style"} %></td>
+      <td style="width:15%"><%= remaining_resource_rows %> </td>
+      <td style="width:10%" ><%=  new_form.hidden_field(:remote_ip , :value=>request.remote_ip)  %> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%" ></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%">&nbsp; </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:15%"> </td>
+      <td style="width:10%" ></td>
+      <td style="width:10%"></td>
+      <td style="width:10%"></td>
+      <td style="width:10%" ></td>
+    </tr>
+
+  </table>
+
+
+
+
+<% end %>

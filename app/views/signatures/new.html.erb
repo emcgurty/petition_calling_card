@@ -1,0 +1,277 @@
+<% form_for(:signatures , :url => {:action => 'create'}) do |item| %> 
+  <%=  check_for_errors(@signatures) %>
+  <%= flash[:notice] if flash[:notice] %>
+  <% mySignatureCount = Signatures.count %>
+
+  <table class=ListComments >
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+    <tr >
+      <td style="width:5%" >&nbsp;</td>
+      <td class=PetitionTitle colspan=2>Sign the Petition</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td class=labelred colspan=4>Red fields are required. (x) indicates maximum characters.</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td style="width:20%" ></td>
+      <td style="width:20%" ></td>
+      <td style="width:20%" ></td>
+      <td style="width:20%" ></td>
+      <td style="width:15%" ></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan=4 >
+        <table class="ListComments">
+          <tr>
+            
+            <td style="width:15%" class=labelred >First Name</td>
+            <td style="width:5%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td style="width:5%" class=labelgreen>MI</td>
+            <td style="width:5%" >&nbsp;</td>
+            <td style="width:15%" class=labelred>Last Name</td>
+            <td style="width:55%" >&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan=4 >
+        <table class="ListComments">
+          <tr>
+
+            <td style="width:15%" colspan="0"><%=  item.text_field(:first_name, :size=> 15) %></td>
+            <td style="width:5%" colspan="0">&nbsp;</td>
+            <td style="width:5%" colspan="0"><%= item.text_field(:mi, :size=> 1) %></td>
+            <td style="width:5%" >&nbsp;</td>
+            <td style="width:15%" ><%=  item.text_field(:last_name, :size=> 15) %></td>
+            <td style="width:55%" >&nbsp;</td>
+
+          </tr>
+        </table>
+      </td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan=4 class=displayname >
+        Display Name? (Check if you want your name to appear in the Petition listing):<%= item.check_box('display_name') %></td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan=4>
+        <table class=ListComments>
+          <tr>
+            
+            <td class=labelred style="width:35%">Alias (6...16 chars)</td>
+            <td style="width:10%" >&nbsp;</td>
+            <td class=labelgreen style="width:30%" style="text-align:left">Year of Birth</td>
+            <td style="width:5%" >&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+
+    <tr   >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan=4>
+        <table class=ListComments>
+          <tr>
+            
+            <td style="width:35%"><%= item.text_field(:alias, :size=> 16) %></td>
+            <td style="width:10%" >&nbsp;</td>
+            <td style="width:30%"><%= select("signatures", "YOB", 1910.upto(2013).to_a ) %></td>
+            <td style="width:5%" >&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td class=label1 colspan=4>email address: (50)</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan=4><%= item.text_field(:email, :size=> 50) %></td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td class=labelred colspan=2>Address Line 1 (20)</td>
+      <td class=label1 colspan=2>Address Line 2 (20)</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+
+    <tr >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan=2><%= item.text_field(:address1, :size => 20) %></td>
+      <td colspan=2><%= item.text_field(:address2 , :size => 20) %></td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td style="width:20%" class=labelred>City</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:20%" class=labelred>State</td>
+      <td style="width:20%" class=label1 >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+    <tr >
+      <td style="width:5%" >&nbsp;</td>
+      <td style="width:20%"><%= item.text_field(:city, :size => 15) %></td>
+      <td style="width:20%">&nbsp;</td>
+      <% collab_state = CollaboratorMethods.collaborator_value[:collaborator][:state] %>
+      <td style="width:20%" align=left><%= generate_combo(:us_states, collab_state) %></td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td style="width:20%" class=labelred>Country</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:20%" class=labelgreen>Providence</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+    <tr >
+      <td style="width:5%" >&nbsp;</td>
+      <% collab_country = CollaboratorMethods.collaborator_value[:collaborator][:country] %>
+      <td style="width:20%" align=left><%= generate_combo(:countries, collab_country) %></td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:20%"><%= item.text_field(:providence, :size => 15) %></td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan=4 class="labelred">Postal Code</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan="4" ><%= item.text_field(:postal_code, :size => 12) %></td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan=4>
+        <table class=ListComments>
+          <tr>
+            <td class=labelgreen valign=top >Comments (255):</td>
+            <td >&nbsp;</td>
+            <td rowspan=3><%= item.text_area(:comments,:rows=>5, :cols=>55 ) %></td>
+          </tr>
+        </table>
+      </td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:20%" >&nbsp;</td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td colspan=4 align=right class=labelred>&nbsp;<%= item.check_box('signature_agreement') %>
+        I attest that I am a responsible person and that I am offering my signature in earnest.</td>
+      <td style="width:15%" ></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td style="width:20%" ></td>
+      <td style="width:20%" ></td>
+      <td style="width:20%" ></td>
+      <td style="width:20%" ></td>
+      <td style="width:15%" ></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td style="width:20%"><%= submit_tag "Submit Electronic Signature" , {:class=>"button_style" } %></td>
+      <td style="width:20%"><%= link_to  "Changed My Mind", root_url, {:class=>"button_style"} %></td>
+      <td style="width:20%"><input type="reset" value="Clear Entries" class="button_style"  /></td>
+      <td style="width:20%" ></td>
+      <td style="width:15%" >&nbsp;</td>
+    </tr>
+
+
+    <tr  >
+      <td style="width:5%" >&nbsp;</td>
+      <td style="width:20%" ></td>
+      <td style="width:20%" ></td>
+      <td style="width:20%" ></td>
+      <td style="width:20%" ></td>
+      <td style="width:15%" ></td>
+    </tr>
+
+    <tr  >
+      <td style="width:5%">&nbsp;</td>
+      <td style="width:20%"><%= item.hidden_field :created_at, :value => Time.now %></td>
+      <td style="width:20%"><%=  item.hidden_field :remote_ip, :value => request.remote_ip %></td>
+      <td style="width:20%"></td>
+      <td style="width:20%"><%= item.hidden_field :signature_number, :value => (mySignatureCount +1) %></td>
+      <td style="width:15%"><%= item.hidden_field :comments_approved, :value => 0 %></td>
+    </tr>
+
+
+  </table>
+
+
+<% end %>

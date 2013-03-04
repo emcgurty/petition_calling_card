@@ -1,0 +1,156 @@
+<% form_for(:signatures , :url => {:action => 'delete'}) do |form| %>
+
+  <div class=content>
+
+    <p class=PetitionTitle><%=  CollaboratorMethods.collaborator_value[:collaborator][:petition_subtitle] %></p>
+    <p class=PetitionTitle><%=  CollaboratorMethods.collaborator_value[:collaborator][:petition_title] %></p>
+    <p><%= CollaboratorMethods.collaborator_value[:collaborator][:petition_message] %></p>
+    <p>We, the undersigners, agree ..............</p>
+
+
+  </div>
+
+  <hr color="green" />
+  <%= flash[:notice] if flash[:notice] %>
+
+  <% if @signatures.blank? %>
+    <table class=ListComments>
+
+      <tr >
+        <td   style="width:5%"  ></td>
+        <td   colspan=2 class=label1 align=left>No signatures have yet been submitted.</td>
+        <td   style="width:20%" align=left ><%= link_to "Sign the Petition",  signatures_new_url, {:class=>"button_style"}  %></td>
+        <td   style="width:10%"  ></td>
+        <td   style="width:10%" ></td>
+        <td   style="width:14%" ></td>
+
+      </tr>
+
+    </table>
+
+  <% else %>
+
+    <div class=signature_results >
+
+      <table  class=ListComments >
+        <tr >
+          <td  colspan=5 class=labelgreen valign=center>Displaying signatures in groups of <%= CollaboratorMethods.collaborator_value[:display_rows][:text]  %>.</td>
+          <% @current_count = Signatures.count(:conditions => 'signature_number = true') %>
+          <% @count_msg = "Currently #{pluralize(@current_count, "signature")} with 'agreement'" %>
+          <td style="width:10%"    colspan=5  class=labelgreen valign=center><%= @count_msg %></td>
+          <td style="width:10%"    style="width:6%" ></td>
+        </tr>
+        <tr >
+          <th  style="width:5%"  >No.</th>
+          <th  style="width:15%" >Full Name</th>
+          <th  style="width:10%" >Alias</th>
+          <th  style="width:10%" >City</th>
+          <th  style="width:10%" >State</th>
+          <th  style="width:10%" >Providence</th>
+          <th  style="width:10%" >Country</th>
+          <th  style="width:10%" >Postal Code </th>
+          <th style="width:10%"  >Created</th>
+          <th style="width:5%"  >Delete</th>
+        </tr>
+      </table>
+
+      <% myColor = 0 %>
+      <% row_number = 0 %>
+      <% @signatures.each do |item| %>
+        <% row_number = row_number + 1 %>
+        <% if item.signature_number %>
+          <table class=ListComments >
+            <% myColor = myColor + 1 %>
+            <% if (myColor % 2) == 1 %>
+              <tr bgcolor="#E8E8E8" >
+              <% else %>
+              <tr >
+              <% end %>
+
+              <td style="width:5%"   ><%=  row_number %></td>
+              <td style="width:15%"   >
+                <%=  get_full_name(item) %>
+              </td>
+
+              <td style="width:10%"    >
+                <% strem = item.email %>
+                <% strco = item.comments %>
+                <% showComments = (not strem.blank?) && (not strco.blank?) && (item.comments_approved) %>
+                <% if (showComments) %>
+                  <% myDiv =  'userdetail' + (item.signature_number).to_s %>
+                  <%= link_to_function item.alias, 'displayComments(' + myDiv +  ')' %>
+                <% else %>
+                  <%=  item.alias %>
+                <% end %>
+              </td>
+
+
+              <td style="width:10%"   >
+                <%=  item.city %>
+              </td>
+
+              <td style="width:10%"    >
+                <%=  find_element_in_multidimensional_array(CollaboratorMethods.collaborator_value[:us_states], item.state_id)  %>
+              </td>
+              <td style="width:10%"    ><%=  item.providence %></td>
+              <td style="width:10%"    >
+                <%=  find_element_in_multidimensional_array(CollaboratorMethods.collaborator_value[:countries], item.country_id)  %>
+              </td>
+
+              <td style="width:10%"    >
+                <%= item.postal_code %>
+              </td>
+
+              <td style="width:10%;text-align:right"    id=smalldate  >
+                <%=  item.created_at %>
+              </td>
+
+
+              <td style="width:10%;text-align:right"    >
+                <%=  hidden_field_tag(:id, item.uuid.to_s ) %>
+                <%= submit_tag "Delete",{:id => item.uuid, :class=>"button_style"}  %>
+              </td>
+            </tr>
+          </table>
+
+
+          <% if (showComments) %>
+            <div id="<%= myDiv  %>"  style="display:none;" class="userComments" >
+              <table class=userComments >
+                <tr >
+                  <td style="width:10%"   >&nbsp;</td>
+                  <td style="width:10%"   class=labelgreen >email</td>
+                  <td style="width:10%"   >&nbsp;</td>
+                  <td style="width:10%"   class=labelgreen >Comments</td>
+                  <td style="width:10%"    >&nbsp;</td>
+                  <td style="width:10%"    >&nbsp;</td>
+                  <td style="width:10%"    >&nbsp;</td>
+                </tr>
+
+                <tr>
+                  <td style="width:10%"   >&nbsp;</td>
+                  <td style="width:10%"    colspan=2 ><%=  mail_to item.email %></td>
+                  <td style="width:10%"    colspan=3 rowspan=4 valign=top><%=  item.comments %></td>
+                  <td style="width:10%"    >
+                  </td>
+                </tr>
+
+                <tr >
+                  <td style="width:10%"    >&nbsp;</td>
+                  <td style="width:10%"    >&nbsp;</td>
+                  <td style="width:10%"    >&nbsp;</td>
+                  <td style="width:10%"    >&nbsp;</td>
+                </tr>
+              </table>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <div id=groupsofrecords>
+        <%= render :partial => 'signatures/groupsof', :locals => {:object => @signatures, :current_count => @current_count } %>
+      </div>
+    <% end %>
+
+  </div>
+
+<% end %>

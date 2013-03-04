@@ -1,0 +1,115 @@
+<% form_for(:perspectives, :url => {:action => 'create'}, :html => {:multipart => true}) do |nf| %>   
+
+<%= check_for_errors(@perspectives) %>
+
+<table class=ListComments>
+<tr   >
+<td style="width:5%"   >&nbsp;</td>
+<td style="width:20%"   >&nbsp;</td>
+<td style="width:10%"   >&nbsp;</td>
+<td style="width:10%"   >&nbsp;</td>
+<td style="width:15%"   >&nbsp;</td>
+<td style="width:5%"   >&nbsp;</td>
+</tr>
+
+<tr   >
+<td style="width:5%"   >&nbsp;</td>
+<td colspan=3  class=PetitionTitle >Share Your Perspective</td>
+<td style="width:15%"   >&nbsp; </td>
+<td style="width:5%"   >&nbsp; </td>
+</tr>
+
+
+
+<tr   >
+<td style="width:5%"   >&nbsp; </td>
+<td colspan=3   >* All fields are required</td>
+<td style="width:15%"   > &nbsp;</td>
+<td style="width:5%"   >&nbsp; </td>
+</tr>
+
+<tr   >
+<td style="width:5%"   > </td>
+<td style="width:20%"   ></td>
+<td style="width:10%"   > </td>
+<td style="width:10%"   ></td>
+<td style="width:15%"   > </td>
+<td style="width:5%"   > </td>
+</tr>
+
+<tr   >
+<td style="width:5%"   >&nbsp; </td>
+<td colspan=3  class=labelred >(x) indicates maximum characters.</td>
+<td style="width:15%"   >&nbsp; </td>
+<td style="width:5%"   >&nbsp; </td>
+</tr>
+
+<tr   >
+<td style="width:5%"   >&nbsp; </td>
+<td style="width:20%"   ></td>
+<td style="width:10%"   > </td>
+<td style="width:10%"   ></td>
+<td style="width:15%"   > </td>
+<td style="width:5%"   > </td>
+</tr>
+
+<tr   >
+<td style="width:5%"   >&nbsp;</td>
+<td colspan=2  class=label1  >Your Alias (6..16):</td>
+<td style="width:10%"   ><%=  nf.text_field(:alias, :size=> 16) %></td>
+<td style="width:15%"   > &nbsp;</td>
+<td style="width:5%"   >&nbsp; </td>
+</tr>
+
+<tr   >
+<td style="width:5%"   > </td>
+<td colspan=2  class=label1 >Your email (50):</td>
+<td colspan=2   ><%=  nf.text_field(:email, :size => 50) %></td>
+<td style="width:5%"   > </td>
+</tr>
+
+<tr   >
+<td style="width:5%"   >&nbsp; </td>
+<td colspan=2  class=label1 valign="top" >Your comments:</td>
+<td colspan=2 rowspan=3><%=  nf.text_area(:record_text, :rows=> 6, :cols=> 30, :size => 255) %></td>
+<td style="width:5%"   >&nbsp; </td>
+</tr>
+
+<tr   >
+<td style="width:5%"   >&nbsp; </td>
+<td colspan=2 class=label1  valign="top" >(255, includes spaces)</td>
+<td style="width:5%"   >&nbsp; </td>
+</tr>
+
+<tr   >
+<td style="width:5%"   >&nbsp; </td>
+<td style="width:20%"   >&nbsp;</td>
+<td style="width:10%"   >&nbsp;</td>
+<td style="width:5%"   >&nbsp; </td>
+</tr>
+
+<tr   >
+<td style="width:5%"   >&nbsp; </td>
+<td style="width:20%"   >&nbsp;</td>
+<td style="width:10%"   >&nbsp;</td>
+<td style="width:5%"   >&nbsp; </td>
+</tr>
+
+
+<tr   >
+<td style="width:5%">&nbsp; </td>
+<td colspan=2>&nbsp;&nbsp;<%= submit_tag "Offer Perspective",{:class=>"button_style"} %></td>
+<td colspan=2><%= link_to "Changed My Mind", root_url, {:class=>"button_style"} %></td>
+<td style="width:5%">&nbsp;</td>
+</tr>
+
+<tr   >
+<td style="width:5%" >&nbsp; </td>
+<td colspan=4>&nbsp;<%=  nf.hidden_field :remote_ip, :value => request.remote_ip %>
+</td>
+<td style="width:5%"   > &nbsp;</td>
+</tr>
+
+</table>
+
+<% end %>

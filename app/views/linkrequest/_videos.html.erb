@@ -1,0 +1,53 @@
+<% @linkrequest = Linkrequest.find(:all, :conditions => "approved = 1") %>
+<% if @linkrequest.empty? %>
+
+  <table class=ListComments  >
+    <tr>
+      <th>*</th>
+      <th class=PageTitle2>Offered Resources</th>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class=PageTitle2>No resources yet</td>
+    </tr>
+  </table>
+
+<% else %>
+
+  <% displayed_row_size = @linkrequest.size %>
+
+  <table class=ListComments  >
+
+    <tr>
+      <th>*</th>
+      <th class=PageTitle2>Offered Resources</th>
+    </tr>
+    <% @linkrequest.each_with_index do |row, index| %>
+      <tr>
+        <td colspan="2">
+          <ul class="title" ><%= row[:organization_name] %>
+            <% row.offerings.each do |assoc_row| %>
+              <li class=tier1 ><%= assoc_row.resource_description %></li>
+              <li class=tier1 ><%= get_organization_url(assoc_row.resource_url) %></li>
+
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+
+    <% if displayed_row_size > 4 %>
+      <tr >
+        <td>&nbsp;</td>
+        <td>
+          <%= button_to "More...", displayalllistingsgrid_url, {:class=>"button_style" } %>
+        </td>
+      </tr>
+    <%end %>
+    </table>
+<% end %>
+
+
+
+
+

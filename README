@@ -1,0 +1,62 @@
+Dear All,
+
+Built against Rails version 2.1 and Ruby 187. Database MySQL, version 5.1.  Wish I had used more current Rails version but
+IDE choice for later versions involve expense which I am not willing to accept at this point.
+
+To the extend to which I have allotted time to test, this application is generally fully functional if you have the necessary gems installed.
+
+Matters of functionality:  I realize that before an application designer/developer there is plethora of options.  I am aware of many of them.  This sample application is intended to demonstrate just the tip of the ice berg.  For example, I am capable of developing a very thorough search aspect for a given table or joins on numerous tables. With that in mind this application only reflects tables, while I understand the need and convenience for views and stored procedures.  With regard to visual appeal, I haven't invested any time in that.
+
+Things I haven't done yet:
+ - Haven't fully configured for caching, for example, and general difference between test/development/production
+ - Provided more attractive html from css.
+ - Completed begin/rescue error trapping
+ - Resurrected my on error and on email response pages
+ - Activated SMPT, sending mail
+ - Written integration and functionality tests against mock data, but for my previous employer b2b2dot0, I verified and/or edited hundreds. I also understand and have coded performance benchmarking. 
+   and made significant contributions with regard to traversing to detect values
+ - Will offer table <th column sorting (asc/desc) with the ability to provide database retrieval for each column telling icons
+ - Fully commented my code
+ - Reviewed code for too much procedural code, and certain bits I need yet to place in a Helper
+ - Completed validation but my general approach is in the linkrequest model
+ - Demonstrated my decent understanding of Javascript and JQuery
+ - Implemented Search Engine Optimization/Enabling
+ 
+
+Things that I have done:
+ - Implemented an Admin view, while not thorough with regard to validation, to 'approve' certain table records,
+   eventually will be available to only a designated user.
+ - Provided example of has_many, belongs_to in linkrequest/offerings controller/models
+ - Provided hints as to how to deploy this application as a base (trunk) application with overrides in controller/model,
+   eg trunk _controller, derived _collaborator
+ - Used UUID for primary key value
+ - Provided decent user authentication
+ - Numerous examples of controller helpers
+ - Good use to routes.rb
+ - Gathering data from yml
+ - Use of email Notifier
+ - Use of Observers
+ - Gathering images from view with consideration for file names that contain spaces, linkrequest controller
+ - Validation of url, linkrequest model
+ - Decent schema with indexing and override of system primary key id
+ - Interesting 'counting' or 'offsetting' code
+ - While not yet deployed, interesting use of reg expressions on validation
+ - Offered multiple submit_tags in the same view/form, linkrequest controller
+ - Simulated pagination in signature controller
+ - Schema.rb reflects a normalized database structure with some indexing although not complete yet, it also reflects
+   in its structuring support of the application, see the admin controller
+ - Strong understanding of Rails structure (Models, Controllers and Views)
+
+In general, I feel that I have offered a reasonable and useful product, and have demonstrated a strong understanding
+of Ruby and Rails.  Just one final matter, I have an advanced background in math.  Previous employers have valued that and I have been able to provide those skills with ametrics-based algorithms.
+
+Best to you all,
+
+Elizabeth McGurty
+emcgurty3@comast.net
+
+
+
+
+
+

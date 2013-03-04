@@ -1,0 +1,70 @@
+<% @linkrequest = Linkrequest.find(:all, :readonly=>true, :order => "created_at desc", :conditions => ['approved = 1']) %>
+<% if @linkrequest.empty? %>
+  <table class=ListComments >
+    <tr>
+      <th>*</th>
+      <th class=PageTitle2>Offered Links</th>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class=PageTitle2><%= link_to "Be the first!", linkrequest_new_url %></td>
+    </tr>
+
+  </table>
+<% else %>
+
+
+  <% display_links_number = @linkrequest.size %>
+  <% myRowCount = 0 %>
+
+  <table class=ListComments >
+
+    <tr>
+      <th>*</th>
+      <th class=PageTitle2>Offered Links</th>
+    </tr>
+
+    <% @linkrequest.each do |row| %>
+      <% myRowCount = myRowCount + 1 %>
+      <tr>
+        <td>&nbsp;</td>
+        <td class=smallfont><%= get_organization_url(row.organization_url) %></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <% unless row.image_file_name.blank? %>
+          <% file_name = row.image_file_name.to_s.gsub(/[^\w._-]/, '') %>
+          <td><% img_source = "collaborator/linkrequest_images/#{file_name}" %><%= image_tag(img_source,  :size => "32x32") %></td>
+        <% else %>
+          <td>No image</td>
+        <% end %>
+      </tr>
+      <% if session[:user_id] %>
+        <% if session[:user_id] == row.user_id %>
+          <tr>
+            <td>&nbsp;</td>
+            <td><%= link_to("Edit", linkrequest_edit_url(row.id) ) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      <tr>
+        <td >&nbsp;</td>
+        <td ></td>
+      </tr>
+    <% end %>
+
+    <% if display_links_number > CollaboratorMethods.collaborator_value[:display_links][:number].to_i  %>
+      <tr>
+        <td >&nbsp;</td>
+        <td ></td>
+      </tr>
+
+      <tr class=niceborder>
+        <td>&nbsp;</td>
+        <td><%= button_to "More...", displayalllistingsgrid_url, {:class=>"button_style" } %></td>
+      </tr>
+
+    <%end %>
+
+  </table>
+<% end %>

@@ -1,0 +1,39 @@
+<% unless @comments.blank? %>
+   <table class=userComments style="width:100%" >
+
+    <tr valign="top" align=left>
+      <th style="width:2%"  >&nbsp;</th>
+      <th style="width:10%" valign=top>Alias</th>
+      <th style="width:15%" valign=top>Alias email</th>
+      <th style="width:35%" >Comments</th>
+      <th style="width:20%" >Date Created</th>
+      <th style="width:20%" >Delete</th>
+    </tr>
+
+   </table>
+ <% myColor = 0 %>
+<% @comments.each do |cmt| %>
+ <table class=userComments style="width:100%" >
+
+
+   
+    <% myColor = myColor +1 %>
+    <% if (myColor % 2) == 1 %>
+      <tr bgcolor="#E5B372" >
+      <% else %>
+      <tr bgcolor="#F3F6A4">
+      <% end %>
+
+      <td style="width:2%"   >&nbsp;</td>
+      <td style="width:10%"  valign=top><%=  cmt.alias %></td>
+      <td style="width:15%"  valign=top><%=  cmt.email %></td>
+      <td style="width:35%"  valign=top><%=  cmt.record_text %></td>
+      <td style="width:20%"  valign=top class=smalldate><%=  cmt.created_at %></td>
+      <td style="width:20%"  valign=top class=smalldate>
+        <%= link_to "Delete", comments_delete_url(cmt.c_uuid), {:class=>"button_style"} %>
+      </td>
+    </tr>
+ 
+  </table>
+<% end %>
+<% end %>
