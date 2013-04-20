@@ -1,7 +1,6 @@
 Dear All,
 
-Built against Rails version 2.1 and Ruby 187. Database MySQL, version 5.1.  Wish I had used more current Rails version but
-IDE choice for later versions involve expense which I am not willing to accept at this point.
+Built against Rails version 2.1 and Ruby 187. Database MySQL, version 5.1.  
 
 To the extend to which I have allotted time to test, this application is generally fully functional if you have the necessary gems installed.
 
@@ -13,7 +12,7 @@ Things I haven't done yet:
  - Completed begin/rescue error trapping
  - Resurrected my on error and on email response pages
  - Activated SMPT, sending mail
- - Written integration and functionality tests against mock data, but for my previous employer b2b2dot0, I verified and/or edited hundreds. I also understand and have coded performance benchmarking. 
+ - Written integration and functionality tests against mock data, but for my previous employer, I verified and/or edited hundreds. I also understand and have coded performance benchmarking. 
    and made significant contributions with regard to traversing to detect values
  - Will offer table <th column sorting (asc/desc) with the ability to provide database retrieval for each column telling icons
  - Fully commented my code
