@@ -1,50 +1,54 @@
-#Petitions::Application.configure do
-# Settings specified here will take precedence over those in config/application.rb
-# Log error messages when you accidentally call methods on nil.
-#config.whiny_nils = false
-# Show full error reports and disable caching
-#  config.consider_all_requests_local       = true
-#  config.action_view.debug_rjs             = true
-#  config.action_controller.perform_caching = false
-#config.middleware.clear
-#config.active_record.observers
-# Don't care if the mailer can't send
+require 'collaborator_values'
+include CollaboratorValues
+CollaboratorMethods.load_values
 
 
-#config.action_mailer.default_charset = "utf-8"
-#config.action_mailer.default_content_type = "text/html"
+Petitions::Application.configure do
+
+  config.whiny_nils = true
+
+  # Use the database for sessions instead of the cookie-based default,
+  # which shouldn't be used to store highly confidential information
+  # (create the session table with "rake db:sessions:create")
+  config.session_store(:active_record_store)
+
+  config.action_view.debug_rjs             = true
+  config.log_level = :debug
+  config.autoload_paths += %W( #{Rails.root}/collaborator)
+#  config.autoload_paths += %W( #{Rails.root}/collaborator/source_files)
+  #  config.action_controller.perform_caching = false
+  #config.middleware.clear
+  config.active_record.observers = :signatures_observer, :comments_observer, :linkrequest_observer, :perspectives_observer, :user_observer, :offering_observer
+  config.action_mailer.default_charset = "utf-8"
+  config.action_mailer.default_content_type = "text/html"
 
 
-# In the development environment your application's code is reloaded on
-# every request.  This slows down response time but is perfect for development
-# since you don't have to restart the webserver when you make code changes.
-#  config.cache_classes = false
+  # In the development environment your application's code is reloaded on
+  # every request.  This slows down response time but is perfect for development
+  # since you don't have to restart the webserver when you make code changes.
+  config.cache_classes = false
 
-# Log error messages when you accidentally call methods on nil.
-config.whiny_nils = true
+  # Log error messages when you accidentally call methods on nil.
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  #  # See application.rb
+  #  # :enable_starttls_auto => true,
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com" ,
+    :port => 587,
+    :domain => "gmail.com",
+    :authentication => :login,
+    :user_name =>  "",
+    :password =>  ""
+  }
 
-  
-
-#  config.active_record.observers = :linkrequest_observer, :perspectives_observer, :users_observer, :signatures_observer, :comments_observer
-#  config.action_mailer.raise_delivery_errors = true
-#  config.action_mailer.delivery_method = :smtp
-#  # See application.rb
-#  # :enable_starttls_auto => true,
-#  config.action_mailer.smtp_settings = {
-#    :address => "smtp.gmail.com" ,
-#    :port => 587,
-#    :domain => "gmail.com",
-#    :authentication => :plain,
-#    :user_name =>  "your@gmail.com",
-#    :password =>  ""
-#  }
-
-# Print deprecation notices to the Rails logger
-#  config.active_support.deprecation = :log
-
-# Only use best-standards-support built into browsers
-#  config.action_dispatch.best_standards_support = :builtin
+    # Print deprecation notices to the Rails logger
+    config.active_support.deprecation = :log
+    # config.assets.enabled = true
+    # Only use best-standards-support built into browsers
+    #  config.action_dispatch.best_standards_support = :builtin
 
 
-#end
+  end
 
