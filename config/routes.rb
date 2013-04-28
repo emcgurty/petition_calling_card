@@ -1,4 +1,4 @@
-ActionController::Routing::Routes.draw do |map|
+Petitions::Application.routes.draw do |map|
   
   map.signatures_new 'signatures/new', :controller => "signatures", :action => "new"
   map.show_refresh 'signatures/show_refresh/:id', :controller => "signatures", :action => "show_refresh"
@@ -17,16 +17,18 @@ ActionController::Routing::Routes.draw do |map|
   map.collaborator_show 'collaborator/show', :controller => "collaborator", :action => "show"
   map.home_show 'home/show', :controller => "home", :action => "show"
   map.home_errorpage 'home/errorpage/:error_msg', :controller => "home", :action => "errorpage"
-  map.users_show 'users/show', :controller => "users", :action => "show"
-  map.users_new 'users/new', :controller => "users", :action => "new"
-  map.users_forgot_username 'users/forgot_username', :controller => "users", :action => "forgot_username"
-  map.users_forgot_password 'users/forgot_password', :controller => "users", :action => "forgot_password"
-  map.users_logout 'users/logout', :controller => "users", :action => "logout"
-  map.users_update_user_information 'users/update_user_information/:id', :controller => "users", :action => "update_user_information"
-  map.activate 'users/activate/:activation_code', :controller => "users", :action => "activate"
+  map.user_show 'user/show', :controller => "user", :action => "show"
+  map.user_new 'user/new', :controller => "user", :action => "new"
+  map.user_forgot_username 'user/forgot_username', :controller => "user", :action => "forgot_username"
+  map.user_forgot_password 'user/forgot_password', :controller => "user", :action => "forgot_password"
+  map.user_logout 'user/logout', :controller => "user", :action => "logout"
+  map.user_update_user_information 'user/update_user_information/:id', :controller => "user", :action => "update_user_information"
+  map.activate 'user/activate/:activation_code', :controller => "users", :action => "activate"
   map.root :controller => "home"
   map.connect ':controller/:action/:id'
 
 end
+
+
 
 
